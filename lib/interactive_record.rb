@@ -47,7 +47,6 @@ def save
   sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
   DB[:conn].execute(sql)
   @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
-  binding.pry
 end
 
 def self.find_by_name(name)
@@ -56,7 +55,8 @@ def self.find_by_name(name)
   end
 
 def self.find_by(attribute)
-  sql = "SELECT * FROM #{self.table_name} WHERE #{column_names}'attribute'"
+  sql = "SELECT * FROM #{self.table_name} WHERE #{attribute}'"
   DB[:conn].execute(sql)
 end
+
 end

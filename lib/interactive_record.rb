@@ -19,7 +19,6 @@ def self.column_names
     column_names << row["name"]
   end
   column_names.compact
-  binding.pry
 end
 
 def initialize(options={})
@@ -42,6 +41,7 @@ end
 
 def col_names_for_insert
   self.class.column_names.delete_if {|col| col == "id"}.join(", ")
+  binding.pry
 end
 
 def save
@@ -56,7 +56,7 @@ def self.find_by_name(name)
   end
 
 def self.find_by(attribute)
-  sql = "SELECT * FROM #{self.table_name} WHERE #{column_names} = 'attribute'"
+  sql = "SELECT * FROM #{self.table_name} WHERE #{column_names}'attribute'"
   DB[:conn].execute(sql)
 end
 end

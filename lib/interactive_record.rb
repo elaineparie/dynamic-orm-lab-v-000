@@ -54,6 +54,7 @@ def self.find_by_name(name)
   end
 
 def self.find_by(attribute)
+  binding.pry
   sql = "SELECT * FROM #{self.table_name} WHERE #{column_names} = 'attribute'"
 end
 end
